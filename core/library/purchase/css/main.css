@@ -1,0 +1,16 @@
+/* styles  */
+
+
+    .custom-title {
+        background-color: #007BFF;
+        color: white;
+        font-weight: bold;
+    }
+
+    .hidden {
+        display: none
+    } 
+
+    .visibly {
+        display: none;
+    }

@@ -1,0 +1,17 @@
+.htaccess
+RewriteEngine On
+Options All -Indexes
+
+DirectoryIndex index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /index.php?url=$1 [QSA,L]
+
+config.php
+#Caminhos absolutos
+$pastaInterna="kvik/";
+
+
+/*==============================================*/
+/assets/js/main.js
+/assets/js/main-register.js
+/assets/js/register-newsletter.js
