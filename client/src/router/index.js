@@ -2,7 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Pedidos from '../views/Pedidos.vue'
 import Produtos from '../views/Produtos.vue'
 import Vendas from '../views/Vendas.vue'
-import CadastrarVenda from '../views/CadastrarVenda.vue'
+import CadastroVenda from '../views/CadastroVenda.vue'
+import CadastroProduto from '../views/CadastroProduto.vue'
 
 const routes = [
   {
@@ -27,6 +28,12 @@ const routes = [
     //   ]
   },
 
+  {
+    path: '/cadastroProduto',
+    name: 'CadastroProduto',
+    component: CadastroProduto
+  },
+
  
   {
     path: '/vendas',
@@ -35,9 +42,9 @@ const routes = [
   },
 
   {
-    path: '/cadastrarVenda',
-    name: 'CadastrarVenda',
-    component: CadastrarVenda
+    path: '/cadastroVenda',
+    name: 'CadastroVenda',
+    component: CadastroVenda
   }
 ]
 

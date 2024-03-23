@@ -34,21 +34,32 @@ header("Access-Control-Allow-Origin: *");
 
 // echo json_encode($resposta);
 
-require_once("../models/ConexaoDb.php");
+// require_once("../models/ConexaoDb.php");
+require_once("../models/Crud.php");
 
-class Vendas extends ConexaoDb {
+// class Vendas extends ConexaoDb {
+class Vendas extends Crud {
+
+    protected $crud;
+
+    public function __construct(Crud $crud) {
+        $this->crud = $crud;
+    }
 
     public function listarVendas() {
         try {
            
-            $conexao = $this->conectaDB();
+            // $conexao = $this->conectaDB();
+            $selectVendas = $this->crud->selectDB("*", "devedor", "", array());
                            
-            $sql = "SELECT * FROM devedor";
+            // $sql = "SELECT * FROM devedor";
             
-            $stmt = $conexao->prepare($sql);
-            $stmt->execute();
+            // $stmt = $conexao->prepare($sql);
+            // $stmt->execute();
             
-            $vendas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            // $vendas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $vendas = $selectVendas->fetchAll(PDO::FETCH_ASSOC);
+           
 
             $dataset = [
                 "dados" => $vendas
@@ -64,10 +75,10 @@ class Vendas extends ConexaoDb {
     }
 }
 
-// Crie uma instância da classe Vendas
-$vendas = new Vendas();
 
-// Chame o método para listar as vendas
+$crud = new Crud();
+$vendas = new Vendas($crud);
+
 $vendas->listarVendas();
 
 

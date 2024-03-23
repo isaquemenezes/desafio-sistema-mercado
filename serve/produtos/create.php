@@ -4,9 +4,9 @@
 // Permitir solicitações CORS de qualquer origem
 header('Access-Control-Allow-Origin: *');
 
-// Verificar se a solicitação é um OPTIONS
+
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    // Configurar os cabeçalhos CORS permitidos para a solicitação OPTIONS
+    
     header('Access-Control-Allow-Methods: POST, OPTIONS');
     header('Access-Control-Allow-Headers: Content-Type');
     http_response_code(204);
@@ -49,4 +49,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     http_response_code(405);
     echo json_encode(array('error' => 'Método não permitido'));
 }
-?>
+

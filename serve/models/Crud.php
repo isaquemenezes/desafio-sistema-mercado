@@ -1,7 +1,7 @@
 <?php
-    namespace Models;
+    include_once("ConexaoDb.php");
 
-    class ModelCrud extends ModelConnection{
+    class Crud extends ConexaoDb{
 
         private $crud;
 
