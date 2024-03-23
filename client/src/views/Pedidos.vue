@@ -8,6 +8,8 @@
         <li>Pedido 3</li>
         <!-- ... -->
       </ul>
+
+      <button class="btn btn-primary">Teste Bootstrap </button>
     </div>
   </template>
   
