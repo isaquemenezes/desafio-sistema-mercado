@@ -1,19 +1,19 @@
 <template>
     <div>
       
-      <Venda />
+      <CadastroVenda />
     
     </div>
   </template>
   
   <script>
   
-    import Venda from '../components/Vendas'
+    import CadastroVenda from '../components/CadastroVenda'
   
     export default {
         name: 'Vendas',
         components: {           
-            Venda,           
+            CadastroVenda,           
             
         }
     }

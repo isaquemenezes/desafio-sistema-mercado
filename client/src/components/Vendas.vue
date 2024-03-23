@@ -4,9 +4,9 @@
       <ul>
         <li v-for="(venda, index) in vendas" :key="index">
           <p>ID: {{ venda.id }}</p>
-          <p>Produto: {{ venda.produto }}</p>
-          <p>Quantidade: {{ venda.quantidade }}</p>
-          <p>Preço Unitário: {{ venda.preco_unitario }}</p>
+          <p>Nome: {{ venda.produto }}</p>
+          <!-- <p>Quantidade: {{ venda.quantidade }}</p>
+          <p>Preço Unitário: {{ venda.preco_unitario }}</p> -->
         </li>
       </ul>
     </div>
@@ -23,10 +23,12 @@
       fetch('http://localhost:8000/vendas/index.php')
         .then(response => response.json())
         .then(data => {
-          this.vendas = data.data; 
+          this.vendas = data.dados; 
+
+          console.log('dados', data);
         })
         .catch(error => {
-          console.error('Error fetching data:', error);
+          console.error('Error :', error);
         });
     }
   };

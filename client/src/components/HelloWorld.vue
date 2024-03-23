@@ -6,6 +6,7 @@
       <li><router-link to="/produtos">Produtos</router-link></li>
       <li><router-link to="/pedidos">Pedidos</router-link></li>
       <li><router-link to="/vendas">Vendas</router-link></li>
+      <li><router-link to="/cadastrarVenda">Cadastrar Vendas</router-link></li>
 
     </ul>
 
