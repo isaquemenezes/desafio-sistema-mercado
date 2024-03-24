@@ -1,49 +1,78 @@
 <template>
-  <main class="container">
+   <main class="container">
+     
+     <div class="mt-3 my-3 p-3 bg-body rounded shadow-sm">     
+     </div>    
 
-    <div class="mt-5 my-3 p-3 bg-body rounded shadow-sm">
+     <div class="mt-5 my-3 p-3 bg-body rounded shadow-sm">
 
-      <div class="d-flex justify-content-between">
-        <h3 class="border-bottom pb-2 mb-0">Todas as Vendas</h3>
+<!--       
+           <div class="alert alert-success" role="alert">
+               {{ session('success') }}
+           </div> -->
+          
 
-        <div class="d-flex justify-content-between">
-          <router-link class="btn btn-success" to="/cadastroVenda">Cadastrar Venda</router-link>
+       <div class="d-flex justify-content-between">
+         <h3 class="border-bottom pb-2 mb-0">Todos as vendas</h3>
 
+         <div class="d-flex justify-content-between">
+          
+           <router-link class="btn btn-success" to="/cadastroVenda">Cadastrar Venda</router-link>
+         
+         </div>
+
+       </div>
+      
+
+      
+        <div v-if="vendas.length < 0 ">
+          <strong class="d-block mt-2"> Sem vendas </strong>
         </div>
 
-      </div>
+          <div v-else>
+
+         
+           <!-- start loop  -->
+             <div 
+              class="d-flex text-body-secondary pt-3" 
+              v-for="vanda in vendas" 
+              :key="vanda.id"
+            >           
+               
+              <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <strong class="text-gray-dark"><b>Descrição: </b>{{ vanda.produto.descricao }}</strong>
+
+                  <div> 
+                    <button type="button" class="btn btn-primary me-2">Editar</button>
+                    <button type="button" class="btn btn-danger">Excluir</button>
+                  </div>
+                  
+                </div>
+
+                <div class="d-flex justify-content-start">
+
+                  <div class="d-block">
+                    <b>Tipo: </b> {{ vanda.produto.tipo }}
+                  </div>
+
+                  <div class="d-block ms-3">
+                    <b>Imposto: </b> {{ vanda.produto.percentual }}
+                  </div>
+
+                </div>              
 
 
-      <div class="d-flex text-body-secondary pt-3" v-for="venda in vendas" :key="venda.id">
+              </div>
 
-
-
-
-        <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-          <div class="d-flex justify-content-between">
-            <strong class="text-gray-dark"><b>Descrição: </b>{{ venda.nome }} </strong>
-
-            <div class="d-flex justify-content-between">
-              <a href="#" class="btn btn-primary me-2">editar</a>
-
-              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal"
-                data-product-id="{{ $produto->id }}">
-                Excluir
-              </button>
-
+            </div> 
+             <!-- end loop -->
             </div>
+         
 
-          </div>
-          <span class="d-block"><b>Valor:</b> $produto->valor_venda </span>
-          <span class="d-block"><b>Estoque:</b> $produto->estoque </span>
-        </div>
-
-
-      </div>
-
-
-    </div>
-  </main>
+     </div>
+   </main>
 
 </template>
 

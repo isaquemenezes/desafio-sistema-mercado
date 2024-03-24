@@ -16,27 +16,34 @@ class Vendas extends Crud {
     public function listarVendas() {
         try {
            
-            // $conexao = $this->conectaDB();
+          
             $selectVendas = $this->crud->selectDB(
                 "*", 
-                "devedor", 
+                "vendas", 
                 "", 
                 array()
             );
-                           
-            // $sql = "SELECT * FROM devedor";
-            
-            // $stmt = $conexao->prepare($sql);
-            // $stmt->execute();
-            
-            // $vendas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                                     
             $vendas = $selectVendas->fetchAll(PDO::FETCH_ASSOC);
-           
+
+            foreach ($vendas as &$venda) {
+                
+                $selectProduto = $this->crud->selectDB(
+                    "*", 
+                    "produtos", 
+                    "WHERE id = ?", 
+                    array(
+                        $venda["produto_id"]
+                    )
+                );
+
+                $produto = $selectProduto->fetch(PDO::FETCH_ASSOC);
+                $venda["produto"] = $produto;
+            }
 
             $dataset = [
                 "dados" => $vendas
             ];
-
             
             echo json_encode($dataset);
            

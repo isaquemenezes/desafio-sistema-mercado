@@ -8,7 +8,8 @@ export const apiRoute = {
   },
   vendas: {
     listar: `${baseUrl}/vendas/listar.php`,
-    create: `${baseUrl}/vendas/create.php`
+    create: `${baseUrl}/vendas/create.php`,
+    addProduto: `${baseUrl}/vendas/addProduto.php`
   },
   pedidos: {
     listar: `${baseUrl}/pedidos/listar.php`,
