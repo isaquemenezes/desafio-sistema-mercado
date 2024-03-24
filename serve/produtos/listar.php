@@ -18,7 +18,7 @@ class Produtos extends Crud {
            
             $selectProdutos = $this->crud->selectDB(
                 "*", 
-                "devedor", 
+                "produtos", 
                 "", 
                 array()
             );

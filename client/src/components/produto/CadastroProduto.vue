@@ -13,59 +13,51 @@
                     <form @submit.prevent="submitProduto">
                        
                         <div class="form-group">
-                          <label for="produto">Produto:</label>
-                          <input type="text" id="produto" class="form-control" v-model="produto">
-
-                           
+                          <label for="produto" class="text-start d-block">Descricao do Produto:</label>
+                          <input type="text" id="produto" class="form-control" v-model="descricao">                           
                         </div>
 
-                        <div class="form-group mt-2">
-                           
-
-                            <label for="preco">Preço Unitário:</label>
+                        <div class="form-group mt-2">                        
+                            <label for="preco" class="text-start d-block">Preço Unitário:</label>
                             <input type="number" id="preco" class="form-control" v-model.number="preco" step="0.01">
 
                         </div>
 
-                        <div class="form-group mt-2">
-                            <label for="estoque">Estoque</label>
-                            <input type="number" class="form-control" id="estoque" name="estoque" require>
-                        </div>
+                        <!-- <div class="form-group mt-2">
+                            <label for="estoque"  class="text-start d-block">Estoque</label>
+                            <input type="number" class="form-control" id="estoque" name="estoque" >
+                        </div> -->
 
                         <div class="form-group mt-2">
-                          <label for="preco">Tipo</label>
-                          <select v-model="tipoId" class="form-control">
+                          <label for="preco" class="text-start d-block">Tipo</label>
+                          <select v-model="tipo" class="form-control">
                             <option value="" disabled selected>Selecione um tipo</option>
                             <option 
-                              v-for="tipo in tipos" 
+                              v-for="tipo in arrayTipos" 
                               :key="tipo.id" 
-                              :value="tipo.id"
+                              :value="tipo.tipo"
                             >
-                              {{ tipo.Tipo }}
+                              {{ tipo.tipo }}
                             </option>
                           </select>
                         </div>  
 
                         <div class="form-group mt-2">
 
-                          <label for="preco">Percentual de Imposto</label>
-                          <select v-model="tipoId" class="form-control">
-                            <!-- <option value="" disabled selected>Selecione um tipo</option> -->
+                          <label for="preco" class="text-start d-block">Percentual de Imposto</label>
+                          <select v-model="tipo" class="form-control">
+                           
                             <option 
-                              v-for="tipo in tipos" 
+                              v-for="tipo in arrayTipos" 
                               :key="tipo.id" 
-                              :value="tipo.id"
+                              :value="tipo.tipo"
                             >
                               {{ tipo.percentual_imposto }} %
                             </option>
                           </select>
                         </div>  
                         
-                        <button type="submit">Adicionar Produto</button>
-
-
-
-
+                        <button type="submit">Cadastrar Produto</button>
                         
                     </form>
                 </div>
@@ -84,27 +76,27 @@
 export default {
   data() {
     return {
-      produto: '',
-      quantidade: 0,
+      descricao: '',     
       preco: 0,
-      tipoId: '',
+      // tipoId: '',
+      tipo: '',
 
-      tipos: [],
+      arrayTipos: [],
     };
   },
   methods: {
     submitProduto() {
 
       const percentualImposto = 
-        this.tipos.find(
-          tipo => tipo.id === this.tipoId
+        this.arrayTipos.find(
+          tipoo => tipoo.tipo === this.tipo
         ).percentual_imposto;
      
       const novoProduto = {
-        produto: this.produto,
-        quantidade: this.quantidade,
-        preco_unitario: this.preco,
-        tipo_id: this.tipoId,
+        descricao: this.descricao,        
+        preco: this.preco,
+        // tipo_id: this.tipoId,
+        tipo: this.tipo,
         percentual_imposto: percentualImposto
       };
 
@@ -118,10 +110,10 @@ export default {
       })
       .then(response => response.json())
       .then(data => {
-        this.produto = '';
-        this.quantidade = 0;
+        this.descricao = '';
         this.preco = 0;
-        this.tipoId = '';
+        // this.tipoId = '';
+        this.tipo = '';
         
         console.log('Produto cadastrado com sucesso:', data);
       })
@@ -136,7 +128,7 @@ export default {
       fetch(this.$apiRoute.produtos.tipoImposto)
         .then(response => response.json())
         .then(data => {
-            this.tipos = data.tipos; 
+            this.arrayTipos = data.tipos; 
          })
         .catch(error => {
           console.error('Error :', error);

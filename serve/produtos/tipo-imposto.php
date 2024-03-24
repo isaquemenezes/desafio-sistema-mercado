@@ -6,17 +6,17 @@ header("Access-Control-Allow-Origin: *");
 $tipoProduto = [
     [
         "id" => 1,
-        "Tipo" => "A",
+        "tipo" => "A",
         "percentual_imposto" => 7
     ],
     [
         "id" => 2,
-        "Tipo" => "AA",
+        "tipo" => "AA",
         "percentual_imposto" => 10
     ],
     [
         "id" => 3,
-        "Tipo" => "AAA",
+        "tipo" => "AAA",
         "percentual_imposto" => 17
     ]
 ];
