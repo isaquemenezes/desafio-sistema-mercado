@@ -2,8 +2,8 @@
     <div>
       <h1>Cadastro de Vendas</h1>
   
-      <!-- Formulário de cadastro de produtos -->
-      <form @submit.prevent="submitVendas">
+      <!-- Formulário de venda -->
+      <form @submit.prevent="submitVenda">
         <label for="produto">Produto:</label>
         <input type="text" id="produto" v-model="produto">
         
@@ -19,6 +19,8 @@
   </template>
   
   <script>
+ 
+
   export default {
     data() {
       return {
@@ -28,7 +30,7 @@
       };
     },
     methods: {
-      submitVendas() {
+      submitVenda() {
        
         const novoProduto = {
           produto: this.produto,
@@ -37,7 +39,7 @@
         };
   
         // Envia os dados para a API 
-        fetch('http://localhost:8000/vendas/create.php', {
+        fetch(this.$apiRoute.vendas.create , {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -50,7 +52,7 @@
           this.quantidade = 0;
           this.preco = 0;
           
-          console.log('Venda efetuada com sucesso:', data);
+          console.log('Venda realizada com sucesso:', data);
         })
         .catch(error => {
           console.error('Erro ao realizar venda:', error);

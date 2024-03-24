@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+
 import Pedidos from '../views/Pedidos.vue'
 import Produtos from '../views/Produtos.vue'
 import Vendas from '../views/Vendas.vue'

@@ -1,27 +1,23 @@
 <template>
     <div>
-      <h1>Cfr</h1>
-      <CadastroProduto />
-    
+      <Produtos />
     </div>
   </template>
   
   <script>
+  import Produtos from '@/components/produto/ComponentsProdutos.vue'; // Importe o componente Pedidos
   
-    import CadastroProduto from '../components/produto/CadastroProduto'
-  
-    export default {
-        name: 'Produtos',
-        components: {
-           
-            CadastroProduto,
-           
-            
-        }
+  export default {
+    
+    components: {
+      Produtos, 
     }
+  }
   </script>
   
   <style>
   
   </style>
+    
+    
   

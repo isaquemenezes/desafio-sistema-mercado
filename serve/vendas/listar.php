@@ -3,41 +3,8 @@
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *"); 
 
-
-// $dadosVendas = [
-//     [
-//         "id" => 1,
-//         "produto" => "Produto A",
-//         "quantidade" => 10,
-//         "preco_unitario" => 25.99
-//     ],
-//     [
-//         "id" => 2,
-//         "produto" => "Produto B",
-//         "quantidade" => 5,
-//         "preco_unitario" => 19.99
-//     ],
-//     [
-//         "id" => 3,
-//         "produto" => "Produto C",
-//         "quantidade" => 8,
-//         "preco_unitario" => 30.50
-//     ]
-// ];
-
-
-// $resposta = [
-//     "message" => "Hello, world API - Vendas!",
-//     "data" => $dadosVendas
-// ];
-
-
-// echo json_encode($resposta);
-
-// require_once("../models/ConexaoDb.php");
 require_once("../models/Crud.php");
 
-// class Vendas extends ConexaoDb {
 class Vendas extends Crud {
 
     protected $crud;
@@ -50,7 +17,12 @@ class Vendas extends Crud {
         try {
            
             // $conexao = $this->conectaDB();
-            $selectVendas = $this->crud->selectDB("*", "devedor", "", array());
+            $selectVendas = $this->crud->selectDB(
+                "*", 
+                "devedor", 
+                "", 
+                array()
+            );
                            
             // $sql = "SELECT * FROM devedor";
             

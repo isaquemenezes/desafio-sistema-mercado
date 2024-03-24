@@ -1,6 +1,7 @@
 <template>
     <div>
-      <p>{{ message }}</p>
+      
+     
     </div>
   </template>
   
@@ -8,14 +9,17 @@
   export default {
     data() {
       return {
-        message: ''
+        message: '',
+        pedidos: [], 
       };
     },
     mounted() {
-      fetch('http://localhost:8000/index.php')
+      fetch(this.$apiRoute.pedidos.listar)
         .then(response => response.json())
         .then(data => {
           this.message = data.message;
+
+          console.log('data',data);
         })
         .catch(error => {
           console.error('Error fetching data:', error);

@@ -1,9 +1,7 @@
 <template>
-    <div>
-      <h1>Cprod</h1>
+  
       <CadastroProduto />
-    
-    </div>
+      
   </template>
   
   <script>

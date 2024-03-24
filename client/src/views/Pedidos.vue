@@ -1,25 +1,22 @@
 <template>
-    <div>
-      <!-- Conteúdo do componente Pedidos aqui -->
-      <h1>Lista de Pedidos</h1>
-      <ul>
-        <li>Pedido 1</li>
-        <li>Pedido 2</li>
-        <li>Pedido 3</li>
-        <!-- ... -->
-      </ul>
+  <div>
+    <Pedidos />
+  </div>
+</template>
 
-      <button class="btn btn-primary">Teste Bootstrap </button>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    // Lógica do componente Pedidos aqui
+<script>
+import Pedidos from '@/components/pedido/Pedidos'; // Importe o componente Pedidos
+
+export default {
+  name: ' Pedidos',
+  components: {
+    Pedidos, 
   }
-  </script>
+}
+</script>
+
+<style>
+
+</style>
   
-  <style>
-  /* Estilos do componente Pedidos aqui */
-  </style>
   
