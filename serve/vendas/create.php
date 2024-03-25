@@ -21,19 +21,116 @@ class AddProduto extends Crud {
     public function createVenda() {
         try {
 
-            $addProdutos = json_decode(file_get_contents('php://input'), true);
-            // $finalizarVenda = json_decode(file_get_contents('php://input'), true);
-            
-            // // Verifica se a propriedade 'vender' existe e se é true
-            // if (isset($finalizarVenda['vender']) && $finalizarVenda['vender']) {
-            //     $mensagem = 'A venda deve ser finalizada.';
-            // } else {
-            //     $mensagem = 'A venda não deve ser finalizada.';
-            // }
+           
 
-            // Realiza a inserção do produto
+            $addProduto = json_decode(file_get_contents('php://input'), true);
+            $dados = json_decode(file_get_contents('php://input'), true);
+
+            if(isset($addProduto['id_produto'])) {
+                $id = 0;
+                $numeroVenda = null;
+                $insertProduto = $this->crud->insertDB(
+                    "vendas", 
+                    "?,?,?,?",
+                    array(  
+                        $id,
+                        $addProduto['id_produto'],
+                        0,
+                        $addProduto['quantidade_produto']
+                    ) 
+                );
+            }
+          
+
+
+            if (isset($dados['finalizar']) && $dados['finalizar'] === true) {
+                    
+                // $ultimoNumeroVenda = $this->crud->selectDB(
+                //     "*", 
+                //     "vendas", 
+                //     "where numero_venda=?", 
+                //     array(
+                //         0
+                //     )
+                // )->fetch(PDO::FETCH_ASSOC);
+                $ultimoNumeroVenda = $this->crud->selectDB(
+                    "*", 
+                    "vendas", 
+                    // "ORDER BY id DESC LIMIT 1", 
+                    "WHERE numero_venda <> ? ORDER BY id DESC LIMIT 1",
+                    array(
+                        0
+                    )
+                )->fetch(PDO::FETCH_ASSOC);
+
+                $numeroVenda = $ultimoNumeroVenda ? $ultimoNumeroVenda['numero_venda'] + 1 : 1;
+
+                // $numeroVenda=1;
+            
+                $this->crud->updateDB(
+                    "vendas", 
+                    "numero_venda=?", // values
+                    "numero_venda=?", // where
+                    array(
+                        $numeroVenda,
+                        0
+                    )
+                );
+               
+
+            
+                echo json_encode([
+                    'venda' => 'Venda registrada com sucesso'
+                ]);
+
+               
+            } else {
+                echo json_encode(
+                    array(
+                        'numero_venda' => 'A venda não deve ser finalizada.'
+                    )
+                );
+                
+            }
+
+         
+
+
+            /*
+
+
+            $ultimoNumeroVenda = 
+            $this->crud->selectDB(
+                "numero_venda", 
+                "vendas", 
+                "ORDER BY id DESC LIMIT 1", 
+                array()
+            )->fetch(PDO::FETCH_ASSOC);
+
+            $numeroVenda = $ultimoNumeroVenda ? $ultimoNumeroVenda['numero_venda'] + 1 : 1;
+
+             
+          
+
+            Retorna o número da venda
+            echo json_encode(array('numero_venda' => $numeroVenda));
+      
+        
+
+
+
+
+        
+            
+            // Verifica se a propriedade 'vender' existe e se é true
+            if (isset($finalizarVenda['vender']) && $finalizarVenda['vender']) {
+                $mensagem = 'A venda deve ser finalizada.';
+            } else {
+                $mensagem = 'A venda não deve ser finalizada.';
+            }
+
+            Realiza a inserção do produto
             $id = 0;
-            $numeroVenda = 1; // Coloque aqui o número da venda desejado
             $insertProduto = $this->crud->insertDB(
                 "vendas", 
                 "?,?,?,?",
@@ -46,27 +143,47 @@ class AddProduto extends Crud {
             );
 
            
-            // $selectVendasAtual = $this->crud->selectDB(
-            //     "*", 
-            //     "vendas", 
-            //     "where numero_venda = ?", 
-            //     array(
-            //         $numeroVenda
-            //     )
-            // );
 
-            // $vendas = $selectVendasAtual->fetchAll(PDO::FETCH_ASSOC);
-            // $numeroVenda = isset($vendas[0]['numero_venda']) ? $vendas[0]['numero_venda'] : null;
+             // Percorre todos os produtos adicionados à venda funciona parcialmente
+             foreach ($addProdutos as $produto) {
+                $id = 0;
+                // Realiza a inserção do produto
+                $insertProduto = $this->crud->insertDB(
+                    "vendas", 
+                    "?,?,?,?",
+                    array(  
+                        $id,
+                        $produto['id_produto'],
+                        $numeroVenda,
+                        $produto['quantidade_produto']
+                    ) 
+                );
+            }
 
-            // Monta o dataset com os dados das vendas e o número da venda
-            // $dataset = [
-            //     "dados" => $vendas,
-            //     "numero_venda" => $numeroVenda,
-            //     // "mensagem" => $mensagem // Adiciona a mensagem ao dataset
-            // ];
+           
+            $selectVendasAtual = $this->crud->selectDB(
+                "*", 
+                "vendas", 
+                "where numero_venda = ?", 
+                array(
+                    $numeroVenda
+                )
+            );
 
-            // Retorna os dados das vendas no formato JSON
-            // echo json_encode($dataset);
+            $vendas = $selectVendasAtual->fetchAll(PDO::FETCH_ASSOC);
+            $numeroVenda = isset($vendas[0]['numero_venda']) ? $vendas[0]['numero_venda'] : null;
+
+            Monta o dataset com os dados das vendas e o número da venda
+            $dataset = [
+                "dados" => $vendas,
+                "numero_venda" => $numeroVenda,
+                // "mensagem" => $mensagem // Adiciona a mensagem ao dataset
+            ];
+
+            Retorna os dados das vendas no formato JSON
+            echo json_encode($dataset);
+            */
+
         } catch (PDOException $erro) {
             echo json_encode(array('error' => 'Erro ao buscar as vendas: ' . $erro->getMessage()));
         }

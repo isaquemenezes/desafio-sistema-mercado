@@ -19,26 +19,19 @@
           </div>
          
          </div>
-
-       </div>
-      
-
-      
-         
+       </div> 
         
            <!-- start loop  -->
              <div 
               class="d-flex text-body-secondary pt-3" 
               v-for="produto in produtos" 
               :key="produto.id"
-            >           
+            >          
                
               <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
 
                 <div class="d-flex justify-content-between align-items-center">
-                  <strong class="text-gray-dark"><b>Descrição: </b>{{ produto.descricao }}</strong>
-
-                 
+                  <strong class="text-gray-dark"><b>Descrição: </b>{{ produto.descricao }}</strong>             
 
                     <div> 
                       <button 
@@ -50,13 +43,11 @@
                           produto.quantidade,
                         )" class="btn btn-success">Add +</button>   
                             
-                    </div>
-                  
+                    </div>                  
                   
                 </div>
 
                 <div class="d-flex justify-content-start">
-
                   <div class="d-block">
                     <b>Tipo: </b> {{ produto.tipo }}
                   </div>
@@ -70,33 +61,22 @@
                   </div>                  
 
                 </div>  
-
                 <div class="mt-2 d-flex justify-content-start">                
 
                   <label for="" class="me-2"><b>Quantidade:</b></label>
                   <input type="number" v-model.number="produto.quantidade" min="1" step="1" style="width: 50px;">   
 
-                </div>              
-
-
-              </div>
-
-              
-
+                </div>            
+              </div>            
             </div> 
              <!-- end loop -->
-         
-
      </div>
    </main>
     
-
-   
   </template>
   
   <script>
  
-
   export default {
     data() {
       return {
@@ -107,17 +87,16 @@
       };
     },
     methods: {
+     
+
       submitVenda() {
 
-        this.finalizar = !this.finalizar;
+        // this.finalizar = true;
        
         const novaVenda = {
-          vender: this.finalizar,
+          finalizar: true,
         };
 
-        // console.log('ata);',novaVenda);
-
-        // Envia os dados para a API 
         fetch(this.$apiRoute.vendas.create , {
           method: 'POST',
           headers: {
@@ -145,8 +124,7 @@
           quantidade_produto: quantidade
         
         };
-
-        // Envia os dados para a API 
+       
         fetch(this.$apiRoute.vendas.create , {
           method: 'POST',
           headers: {
@@ -155,9 +133,7 @@
           body: JSON.stringify(addProduto)
         })
         .then(response => response.json())
-        .then(data => {
-
-                   
+        .then(data => {                   
           console.log('Venda realizada com sucesso:', data);
         })
         .catch(error => {
@@ -178,7 +154,6 @@
         .catch(error => {
           console.error('Error :', error);
         });
-
 
       // fetch(this.$apiRoute.vendas.create)
       //   .then(response => response.json())
