@@ -38,11 +38,35 @@ class Vendas extends Crud {
                 );
 
                 $produto = $selectProduto->fetch(PDO::FETCH_ASSOC);
+                
                 $venda["produto"] = $produto;
+
+                // Calcula o total da venda
+                $venda["total"] = $venda["quantidade_produto"] * $produto["preco"];
+
+                // Calcula o imposto da venda sobre cada item
+                $venda["imposto"] = ($produto["preco"] * $produto["percentual"]) / 100;
+
+                // // Calcula o total de produtos por grupo de vendas
+                // $grupo = $venda["numero_venda"];
+                // if (!isset($totalPorGrupo[$grupo])) {
+                //     $totalPorGrupo[$grupo] = 0;
+                // }
+                // $totalPorGrupo[$grupo] += $venda["total"];
+
+                // // Calcula o imposto Total vendas
+                // $grupo = $venda["numero_venda"];
+                // if (!isset($totalImpostoPorGrupo[$grupo])) {
+                //     $totalImpostoPorGrupo[$grupo] = 0;
+                // }
+                // $totalImpostoPorGrupo[$grupo] += $venda["imposto"];
+
             }
 
             $dataset = [
-                "dados" => $vendas
+                "dados" => $vendas,
+                // "totalPorGrupo" => $totalPorGrupo,
+                // "totalImpostoPorGrupo" => $totalImpostoPorGrupo
             ];
             
             echo json_encode($dataset);
