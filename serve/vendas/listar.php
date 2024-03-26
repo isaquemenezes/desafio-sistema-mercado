@@ -5,7 +5,6 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-        // require_once("../classes/venda/Listar.php");
         require_once(__DIR__ . "/../classes/venda/Listar.php");
 
         $crud = new Crud();

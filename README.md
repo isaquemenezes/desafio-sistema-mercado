@@ -40,7 +40,7 @@ php -S localhost:8000
 - [x] vue: 3.2.13
 - [x] phpunit: 11.0
 - [x] DBeaver
-- [x] MySQl
+- [x] MySQL
 - [x] Composer version 2.6.3
 - [x] Visual Studio Code
 - [x] Git
