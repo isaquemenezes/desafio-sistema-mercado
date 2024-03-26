@@ -11,15 +11,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    require_once("../classes/produto/CreateProduto.php");   
+    // require_once ("../classes/produto/CreateProduto.php");
+    require_once(__DIR__ . "/../classes/produto/CreateProduto.php");
 
     $requestData = json_decode(file_get_contents('php://input'), true);
-  
+
     $crud = new Crud();
     $createProdutos = new CreateProduto($crud);
 
     $createProdutos->createProduto($requestData);
-    
+
 } else {
 
     http_response_code(405);

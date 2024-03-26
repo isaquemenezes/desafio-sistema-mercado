@@ -8,13 +8,24 @@
         exit;
     }
 
-    require_once("../classes/venda/AddProduto.php");
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    $requestData = json_decode(file_get_contents('php://input'), true);
-    $confirmarVenda = json_decode(file_get_contents('php://input'), true);
+        // require_once("../classes/venda/AddProduto.php");
+        require_once(__DIR__ . "/../classes/venda/AddProduto.php");
 
-    // Instancia o objeto e chama o método para criar a venda
-    $crud = new Crud();
-    $vendas = new AddProduto($crud);
-    $vendas->createVenda($requestData, $confirmarVenda); 
+        $requestData = json_decode(file_get_contents('php://input'), true);
+        $confirmarVenda = json_decode(file_get_contents('php://input'), true);
 
+        $crud = new Crud();
+        $vendas = new AddProduto($crud);
+        $vendas->createVenda($requestData, $confirmarVenda); 
+
+    } else {
+
+        http_response_code(405);
+        echo json_encode(
+            array(
+                'error' => 'Método não permitido'
+            )
+        );
+    }

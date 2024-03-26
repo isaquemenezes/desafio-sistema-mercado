@@ -1,87 +1,83 @@
 <template>
-   <main class="container">
-     
-     <div class="mt-3 my-3 p-3 bg-body rounded shadow-sm">     
-     </div>    
+  <main class="container">
 
-     <div class="mt-5 my-3 p-3 bg-body rounded shadow-sm">          
+    <div class="mt-3 my-3 p-3 bg-body rounded shadow-sm">
+    </div>
 
-       <div class="d-flex justify-content-between">
-         <h3 class="border-bottom pb-2 mb-0">Todos as vendas </h3>
+    <div class="mt-5 my-3 p-3 bg-body rounded shadow-sm">
 
-         <div class="d-flex justify-content-between">          
+      <div class="d-flex justify-content-between">
+        <h3 class="border-bottom pb-2 mb-0">Todos as vendas </h3>
+
+        <div class="d-flex justify-content-between">
           <router-link class="btn btn-success" to="/cadastroVenda">
             Cadastrar Nova Venda
-          </router-link>         
-         </div>
-       </div>    
-
-       <div v-if="exibirMensagem" class="alert alert-success" role="alert">
-          Venda realizada com sucesso!
+          </router-link>
+        </div>
       </div>
 
-        <div v-if="vendas.length == 0">
-          <strong class="d-block mt-2"> Sem vendas </strong>
-        </div>
+      <div v-if="exibirMensagem" class="alert alert-success" role="alert">
+        Venda realizada com sucesso!
+      </div>
 
-        <div v-else>         
-            <!-- start loop  -->
-            <div v-for="(grupoVendas, index) in Vendas()" :key="index">
-              
-              <h3 class="border-bottom mt-5 pb-2 mb-0 text-start"> 
-                Venda {{ index }}                 
-              </h3> 
+      <div v-if="vendas.length == 0">
+        <strong class="d-block mt-2"> Sem vendas </strong>
+      </div>
 
-                <div 
-                class="d-flex text-body-secondary pt-3" 
-                v-for="venda in grupoVendas" 
-                :key="venda.id"
-                >           
-                
-                    <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
-                      <div class="d-flex justify-content-between align-items-center">
-                        <strong class="text-gray-dark">
-                          <b>Descrição: </b>{{ venda.produto.descricao }}  
-                        </strong>
+      <div v-else>
+        <!-- start loop  -->
+        <div v-for="(grupoVendas, index) in Vendas()" :key="index">
 
-                        <div> 
-                            <button type="button" class="btn btn-primary me-2">Editar</button>
-                            <button type="button" class="btn btn-danger">Excluir</button>
-                        </div>
-                      
-                      </div>
-                      <div class="d-flex justify-content-start">
+          <h3 class="border-bottom mt-5 pb-2 mb-0 text-start">
+            Venda {{ index }}
+          </h3>
 
-                        <div class="d-block">
-                            <b>Valor: </b> {{ venda.produto.preco }}
-                        </div>
-                        <div class="d-block ms-3">
-                            <b>Imposto: </b> {{ venda.produto.percentual }}
-                        </div>
-                        <div class="d-block ms-3">
-                            <b>Quantidade: </b> {{ venda.quantidade_produto }}
-                        </div>
-                        <div class="d-block ms-3">
-                            <b>Total R$: </b> {{ venda.total }}                            
-                        </div>
+          <div class="d-flex text-body-secondary pt-3" v-for="venda in grupoVendas" :key="venda.id">
 
-                        <div class="d-block ms-3">
-                            <b>Imposto R$: </b>  {{ venda.calculo_imposto }}                            
-                        </div>                        
-                      </div>              
-                    </div>           
-                </div> 
+            <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+              <div class="d-flex justify-content-between align-items-center">
+                <strong class="text-gray-dark">
+                  <b>Descrição: </b>{{ venda.produto.descricao }}
+                </strong>
 
-                <h4 class="border-bottom pb-2 mb-5 text-start"> 
-                  Valor Total (R$): {{  calcularTotalPorGrupo(grupoVendas) }} <br> 
-                  Total de Imposto (R$):  {{ calcularTotalImpostoPorGrupo(grupoVendas) }}                  
-                </h4> 
+                <div>
+                  <button type="button" class="btn btn-primary me-2">Editar</button>
+                  <button type="button" class="btn btn-danger">Excluir</button>
+                </div>
+
+              </div>
+              <div class="d-flex justify-content-start">
+
+                <div class="d-block">
+                  <b>Valor: </b> {{ venda.produto.preco }}
+                </div>
+                <div class="d-block ms-3">
+                  <b>Imposto: </b> {{ venda.produto.percentual }}
+                </div>
+                <div class="d-block ms-3">
+                  <b>Quantidade: </b> {{ venda.quantidade_produto }}
+                </div>
+                <div class="d-block ms-3">
+                  <b>Total R$: </b> {{ venda.total }}
+                </div>
+
+                <div class="d-block ms-3">
+                  <b>Imposto R$: </b> {{ venda.calculo_imposto }}
+                </div>
+              </div>
             </div>
-             <!-- end loop -->
-        </div>   
-         
-     </div>
-   </main>
+          </div>
+
+          <div class="border-bottom pb-2 mb-5 text-start">
+            <strong> Valor Total (R$):  </strong>  {{ calcularTotalPorGrupo(grupoVendas) }} <br>
+            <strong> Total de Imposto (R$): </strong> {{ calcularTotalImpostoPorGrupo(grupoVendas) }}
+          </div>
+        </div>
+        <!-- end loop -->
+      </div>
+
+    </div>
+  </main>
 
 </template>
 
@@ -101,21 +97,21 @@ export default {
       const vendasAgrupadas = {};
 
       this.vendas.forEach(venda => {
-        const numeroVenda = venda.numero_venda;        
-        
+        const numeroVenda = venda.numero_venda;
+
         if (!vendasAgrupadas[numeroVenda]) {
           vendasAgrupadas[numeroVenda] = [];
         }
 
-        vendasAgrupadas[numeroVenda].push(venda);       
+        vendasAgrupadas[numeroVenda].push(venda);
       });
-     
+
       return vendasAgrupadas;
     },
 
     calcularTotalPorGrupo(vendas) {
       let total = 0;
-      
+
       vendas.forEach(venda => {
         total += venda.total;
       });
@@ -125,7 +121,7 @@ export default {
 
     calcularTotalImpostoPorGrupo(vendas) {
       let totalImposto = 0;
-      
+
       vendas.forEach(venda => {
         totalImposto += venda.calculo_imposto;
       });
@@ -133,9 +129,9 @@ export default {
       return totalImposto;
     },
 
-   
 
-    
+
+
   },
 
   mounted() {

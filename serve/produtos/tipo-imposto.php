@@ -1,11 +1,25 @@
 <?php
 
 header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *"); 
+header("Access-Control-Allow-Origin: *");
 
-require_once("../classes/produto/TipoProduto.php");
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-$tipoProduto = new TipoProduto();
-$dataset = $tipoProduto->getDataset();
+    // require_once ("../classes/produto/TipoProduto.php");
+    require_once(__DIR__ . "/../classes/produto/TipoProduto.php");
+    
 
-echo json_encode($dataset);
+    $tipoProduto = new TipoProduto();
+    $dataset = $tipoProduto->getDataset();
+
+    echo json_encode($dataset);
+
+} else {
+
+    http_response_code(405);
+    echo json_encode(
+        array(
+            'error' => 'Método não permitido'
+        )
+    );
+}

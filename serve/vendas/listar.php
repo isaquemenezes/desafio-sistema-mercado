@@ -1,14 +1,27 @@
 <?php
 
-header("Content-Type: application/json");
-header("Access-Control-Allow-Origin: *"); 
+    header("Content-Type: application/json");
+    header("Access-Control-Allow-Origin: *"); 
 
-require_once("../classes/venda/Listar.php");
+    if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-$crud = new Crud();
-$vendas = new Listar($crud);
+        // require_once("../classes/venda/Listar.php");
+        require_once(__DIR__ . "/../classes/venda/Listar.php");
 
-$vendas->listarVendas();
+        $crud = new Crud();
+        $vendas = new Listar($crud);
+
+        $vendas->listarVendas();
+
+    } else {
+
+        http_response_code(405);
+        echo json_encode(
+            array(
+                'error' => 'Método não permitido'
+            )
+        );
+    }
 
 
 
