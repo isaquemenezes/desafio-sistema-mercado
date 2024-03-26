@@ -18,10 +18,10 @@ npm run build
 ```
 
 ### Versoes e tecnologias usada neste Project:
-[x] PHP 8.2.4
-[x] Node v14.21.3
-[x] Bootstrap: 5.3.3
-[x] vue: 3.2.13
+-[x] PHP 8.2.4
+- [x] Node v14.21.3
+- [ x ] Bootstrap: 5.3.3
+- [ x ] vue: 3.2.13
 [x] phpunit: 11.0
 [x] DBeaver
 [x] MySQl
