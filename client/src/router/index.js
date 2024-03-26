@@ -1,17 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Pedidos from '../views/Pedidos.vue'
 import Produtos from '../views/Produtos.vue'
 import Vendas from '../views/Vendas.vue'
 import CadastroVenda from '../views/CadastroVenda.vue'
 import CadastroProduto from '../views/CadastroProduto.vue'
 
 const routes = [
-  {
-    path: '/pedidos',
-    name: 'Pedidos',
-    component: Pedidos
-  },
+ 
   {
     path: '/produtos',
     name: 'Produtos',

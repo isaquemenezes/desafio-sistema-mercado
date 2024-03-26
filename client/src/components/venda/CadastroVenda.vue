@@ -7,15 +7,15 @@
 
      <div class="mt-5 my-3 p-3 bg-body rounded shadow-sm">         
 
-       <div class="d-flex justify-content-between">
-         <h3 class="border-bottom pb-2 mb-0">Todos os Produtos</h3>
+          <div class="d-flex justify-content-between">
+            <h3 class="border-bottom pb-2 mb-0">Todos os Produtos</h3>
 
-         <div class="d-flex justify-content-between">
-          
-           <button @click="submitVenda" class="btn btn-success">Finalizar Venda</button> 
-           
-           <div>
-              <p>{{ numeroVenda }}</p>
+            <div class="d-flex justify-content-between">
+              
+                <button @click="submitVenda" class="btn btn-success">Finalizar Venda</button> 
+              
+            <div>
+              
           </div>
          
          </div>
@@ -64,7 +64,12 @@
                 <div class="mt-2 d-flex justify-content-start">                
 
                   <label for="" class="me-2"><b>Quantidade:</b></label>
-                  <input type="number" v-model.number="produto.quantidade" min="1" step="1" style="width: 50px;">   
+                  <input 
+                    type="number" 
+                    v-model.number="produto.quantidade" 
+                    min="1" 
+                    step="1" 
+                  >   
 
                 </div>            
               </div>            
@@ -88,10 +93,7 @@
     },
     methods: {
      
-
       submitVenda() {
-
-        // this.finalizar = true;
        
         const novaVenda = {
           finalizar: true,
@@ -113,6 +115,10 @@
         .catch(error => {
           console.error('Erro ao realizar venda:', error);
         });
+
+        // Redirecionar para a rota de vendas
+        this.$router.push('/vendas');
+
       },
 
       addProduto( id, descricao, preco, percentual, quantidade, ) {
@@ -154,18 +160,6 @@
         .catch(error => {
           console.error('Error :', error);
         });
-
-      // fetch(this.$apiRoute.vendas.create)
-      //   .then(response => response.json())
-      //   .then(data => {
-
-      //     this.numeroVenda = data.numero_venda;
-                        
-      //       console.log('data', data);
-      //    })
-      //   .catch(error => {
-      //     console.error('Error :', error);
-      //   });
     },
   };
   </script>

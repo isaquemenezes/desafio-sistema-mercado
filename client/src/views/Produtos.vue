@@ -5,7 +5,7 @@
   </template>
   
   <script>
-  import Produtos from '@/components/produto/ComponentsProdutos.vue'; // Importe o componente Pedidos
+  import Produtos from '@/components/produto/ComponentsProdutos.vue'; 
   
   export default {
     

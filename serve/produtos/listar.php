@@ -19,13 +19,14 @@ class Produtos extends Crud {
             $selectProdutos = $this->crud->selectDB(
                 "*", 
                 "produtos", 
-                "", 
+                "ORDER BY id DESC", 
                 array()
             );
          
             $produtos = $selectProdutos->fetchAll(PDO::FETCH_ASSOC);
            
             $dataset = [
+                "messagem" => 'Produto cadastrado com sucesso!',
                 "dados" => $produtos
             ];
             
