@@ -5,7 +5,7 @@
   </template>
   
   <script>
-  import Produtos from '@/components/produto/ComponentsProdutos.vue'; 
+  import Produtos from '@/components/produto/Produtos'; 
   
   export default {
     

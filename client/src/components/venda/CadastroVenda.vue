@@ -12,7 +12,7 @@
 
             <div class="d-flex justify-content-between">
               
-                <button @click="submitVenda" class="btn btn-success">Finalizar Venda</button> 
+                <button @click="submitVenda" class="btn btn-primary">Finalizar Venda</button> 
               
             <div>
               

@@ -8,7 +8,7 @@
   
   <script>
   
-    import Venda from '../components/venda/Vendas'
+    import Venda from '@/components/venda/Vendas'
   
     export default {
         name: 'Vendas',

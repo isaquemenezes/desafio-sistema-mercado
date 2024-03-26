@@ -6,7 +6,7 @@
   
   <script>
   
-    import CadastroProduto from '../components/produto/CadastroProduto'
+    import CadastroProduto from '@/components/produto/CadastroProduto'
   
     export default {
         name: 'Produtos',

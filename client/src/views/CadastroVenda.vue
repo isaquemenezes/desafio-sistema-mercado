@@ -8,7 +8,7 @@
   
   <script>
   
-    import CadastroVenda from '../components/venda/CadastroVenda'
+    import CadastroVenda from '@/components/venda/CadastroVenda'
   
     export default {
         name: 'Vendas',
