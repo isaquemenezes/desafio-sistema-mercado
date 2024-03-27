@@ -1,7 +1,7 @@
 <?php
 
     // include("../core/config/config.php");
-    require_once __DIR__ .'/../core/config/config.php';
+    require_once __DIR__ .'/../config/config.php';
     
     abstract class ConexaoDb{
 

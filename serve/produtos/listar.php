@@ -3,9 +3,10 @@
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 
+require_once __DIR__ . "/../classes/produto/Produtos.php";
+
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    require_once(__DIR__ . "/../classes/produto/Produtos.php");
 
     $crud = new Crud();
     $produtos = new Produtos($crud);
@@ -21,4 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         )
     );
 }
+
+
 

@@ -50,6 +50,13 @@ php -S localhost:8000
 - [x] Windows 10
 
 ## Executes os tests:
+
+### teste o cadastro de um novo produto
 ```
 vendor/bin/phpunit tests/CreateProdutoTest.php
+```
+
+### Testes a seleção dos produtos
+```
+vendor/bin/phpunit tests/ProdutoTest.php
 ```
