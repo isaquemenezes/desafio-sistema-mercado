@@ -10,7 +10,7 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        require_once(__DIR__ . "/../classes/venda/AddProduto.php");
+        require_once __DIR__ . "/../controllers/venda/AddProduto.php";
 
         $requestData = json_decode(file_get_contents('php://input'), true);
         $confirmarVenda = json_decode(file_get_contents('php://input'), true);

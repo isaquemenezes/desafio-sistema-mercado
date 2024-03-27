@@ -1,7 +1,7 @@
 <?php
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ .'/../classes/produto/CreateProduto.php';
+require_once __DIR__ .'/../controllers/produto/CreateProduto.php';
 
 class CreateProdutoTest extends TestCase {
     public function testCreateProdutoSuccess() {

@@ -1,22 +1,23 @@
 <?php
 
-    // include("../core/config/config.php");
-    require_once __DIR__ .'/../config/config.php';
-    
-    abstract class ConexaoDb{
+require_once __DIR__ . '/../config/config.php';
 
-        protected function conectaDB(){
+abstract class ConexaoDb
+{
 
-            try{
+    protected function conectaDB()
+    {
 
-                $con=new \PDO("mysql:host=".HOST.";dbname=".DATABASE."; charset=utf8","".USER."","".PASSWORD."");
-                
-                return $con;
+        try {
 
-            }catch (\PDOException $erro){
+            $con = new \PDO("mysql:host=" . HOST . ";dbname=" . DATABASE . "; charset=utf8", "" . USER . "", "" . PASSWORD . "");
 
-                return $erro->getMessage();
+            return $con;
 
-            }
+        } catch (\PDOException $erro) {
+
+            return $erro->getMessage();
+
         }
     }
+}

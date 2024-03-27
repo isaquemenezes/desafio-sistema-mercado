@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    require_once(__DIR__ . "/../classes/produto/CreateProduto.php");
+    require_once __DIR__ . "/../controllers/produto/CreateProduto.php";
 
     $requestData = json_decode(file_get_contents('php://input'), true);
 

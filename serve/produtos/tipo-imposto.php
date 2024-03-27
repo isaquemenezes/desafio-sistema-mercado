@@ -5,7 +5,7 @@ header("Access-Control-Allow-Origin: *");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    require_once(__DIR__ . "/../classes/produto/TipoProduto.php");    
+    require_once __DIR__ . "/../controllers/produto/TipoProduto.php";    
 
     $tipoProduto = new TipoProduto();
     $dataset = $tipoProduto->getDataset();

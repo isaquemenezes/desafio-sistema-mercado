@@ -1,7 +1,7 @@
 <?php
 
-require_once(__DIR__ . "/../models/Crud.php");
-require_once __DIR__ .'/../classes/produto/Produtos.php';
+require_once __DIR__ . "/../models/Crud.php";
+require_once __DIR__ .'/../controllers/produto/Produtos.php';
 
 use PHPUnit\Framework\TestCase;
 class ProdutoTest extends TestCase {
