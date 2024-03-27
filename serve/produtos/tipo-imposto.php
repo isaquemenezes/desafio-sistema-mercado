@@ -1,13 +1,12 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php'; 
 
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
-    require_once __DIR__ . "/../controllers/produto/TipoProduto.php";    
-
-    $tipoProduto = new TipoProduto();
+    $tipoProduto = new \Classes\TipoProduto();
     $dataset = $tipoProduto->getDataset();
 
     echo json_encode($dataset);
