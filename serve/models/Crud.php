@@ -1,5 +1,8 @@
 <?php
-include_once ("ConexaoDb.php");
+namespace Models;
+// include_once ("ConexaoDb.php");
+
+use Models\ConexaoDb;
 
 class Crud extends ConexaoDb
 {

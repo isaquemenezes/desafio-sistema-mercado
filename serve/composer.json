@@ -1,4 +1,22 @@
 {
+    "name": "isaque/gestaomercado",
+    "description": "Gestao",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Isaque Menezes",
+            "email": "isaque-menezes@hotmail.com",
+            "role": "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Classes\\": "classes/",
+            "Models\\": "models/",
+            "Services\\": "services/",
+            "Controllers\\": "controllers/"
+        }
+    },
     "require-dev": {
         "phpunit/phpunit": "^11.0"
     }

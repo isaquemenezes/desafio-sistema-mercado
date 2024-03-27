@@ -77,8 +77,8 @@ export default {
       .then(response => response.json())
       .then(data => {
         this.produtos = data.dados;
-
-        console.log('Dados dos produtos:', this.produtos);
+       
+        console.log('Dados dos produtos:', data);
       })
       .catch(error => {
         console.error('Erro ao buscar os produtos:', error);
