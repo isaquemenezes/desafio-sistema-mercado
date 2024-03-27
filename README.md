@@ -27,7 +27,7 @@ cd serve
 composer install
 ```
 
-## levante o servidor nativo php
+## levante na porta 8000 o servidor nativo php
 ```
 php -S localhost:8000
 ```
@@ -49,14 +49,17 @@ php -S localhost:8000
 - [x] Servidor nativo do PHP (php -S localhost:8000)
 - [x] Windows 10
 
-## Executes os tests:
-
-### teste o cadastro de um novo produto
+## Executes todos os tests:
 ```
-vendor/bin/phpunit tests/CreateProdutoTest.php
+vendor/bin/phpunit
 ```
 
-### Testes a seleção dos produtos
+### teste o controller cadastro
 ```
-vendor/bin/phpunit tests/ProdutoTest.php
+vendor/bin/phpunit tests/Unit/ProdutoControllerTest.php
+```
+
+### Testes o controller vanda
+```
+vendor/bin/phpunit tests/Unit/VendaControllerTest.php
 ```
