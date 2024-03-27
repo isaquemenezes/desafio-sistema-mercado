@@ -6,17 +6,17 @@ use PDOException;
 
 class VendaController
 {
-    protected VendaService $crud;
+    protected VendaService $service;
 
-    public function __construct(VendaService $crud)
+    public function __construct(VendaService $service)
     {
-        $this->crud = $crud;
+        $this->service = $service;
     }
     
     public function listar()
     {
         try {
-            $vendasAPI = $this->crud->listarvendas();
+            $vendasAPI = $this->service->listarvendas();
 
             return $vendasAPI;
         
@@ -29,7 +29,7 @@ class VendaController
     public function criar(array $dados)
     {
         try {
-            $mensagem = $this->crud->criarVenda($dados);
+            $mensagem = $this->service->criarVenda($dados);
             return $mensagem;
         } catch (PDOException $e) {
             http_response_code(500);

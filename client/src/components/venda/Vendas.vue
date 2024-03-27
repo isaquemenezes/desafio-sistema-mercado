@@ -138,6 +138,7 @@ export default {
     fetch(this.$apiRoute.vendas.listar)
       .then(response => response.json())
       .then(data => {
+        // this.vendas = data.vendasAPI;
         this.vendas = data.dados;
         this.exibirMensagem = true;
 

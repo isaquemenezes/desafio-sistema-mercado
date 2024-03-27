@@ -1,6 +1,5 @@
 <?php
 namespace Models;
-// include_once ("ConexaoDb.php");
 
 use Models\ConexaoDb;
 

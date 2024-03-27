@@ -42,17 +42,11 @@ class Venda extends Crud
 
             }
 
-            // return [
-            //     "dados" => $vendas,
-            // ];
-
             $dataset= [
                 "dados" => $vendas,
             ];
 
             echo json_encode($dataset);
-
-
 
         } catch (PDOException $e) {
             throw new PDOException('Erro ao buscar produtos: ' . $e->getMessage());
