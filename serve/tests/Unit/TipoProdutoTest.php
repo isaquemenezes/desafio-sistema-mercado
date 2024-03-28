@@ -10,7 +10,7 @@ class TipoProdutoTest extends TestCase
     {
         $tipoProduto = new TipoProduto();
 
-        $expectedTipos = [
+        $tipos = [
             [
                 "id" => 1,
                 "tipo" => "A",
@@ -28,14 +28,14 @@ class TipoProdutoTest extends TestCase
             ]
         ];
 
-        $this->assertEquals($expectedTipos, $tipoProduto->getTipos());
+        $this->assertEquals($tipos, $tipoProduto->getTipos());
     }
 
     public function testGetDataset()
     {
         $tipoProduto = new TipoProduto();
 
-        $expectedDataset = [
+        $dadosEsperados = [
             "message" => "Tipos de produtos com percentual de imposto",
             "tipos" => [
                 [
@@ -56,6 +56,6 @@ class TipoProdutoTest extends TestCase
             ]
         ];
 
-        $this->assertEquals($expectedDataset, $tipoProduto->getDataset());
+        $this->assertEquals($dadosEsperados, $tipoProduto->getDataset());
     }
 }
