@@ -1,24 +1,24 @@
-# desafio-sistema-mercado
+# sistema mercado
 
 # client
 
-## abra o diretório client
+## Abra o diretório client
 ```
 cd client
 ```
-## instale as dependências
+## Instale as dependências
 ```
 npm install
 ```
 
-### levante o servidor
+### Levante o servidor
 ```
 npm run serve
 ```
 
 # serve - Fornecedor API
 
-## abra o diretório serve
+## Abra o diretório serve
 ```
 cd serve
 ```
@@ -75,9 +75,6 @@ vendor/bin/phinx migrate
 vendor/bin/phpunit
 ```
 
-
-
-
 ### teste o controller cadastro
 ```
 vendor/bin/phpunit tests/Unit/ProdutoControllerTest.php
@@ -93,13 +90,12 @@ vendor/bin/phpunit tests/Unit/VendaControllerTest.php
 composer require robmorgan/phinx
 ```
 
+### Inicialize o phinx
 ```
 php vendor/bin/phinx init
 ``` 
 
-
-
+### Crie as migration
 ```
 vendor/bin/phinx create CreateProdutosTable
 ```
-
