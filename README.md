@@ -22,7 +22,7 @@ npm run serve
 ```
 cd serve
 ```
-## Instale as dependências - neste caso, somente o phpUnit
+## Instale as dependências - neste caso, phpUnit e phinx
 ```
 composer install
 ```
@@ -30,6 +30,27 @@ composer install
 ## levante na porta 8000 o servidor nativo php
 ```
 php -S localhost:8000
+```
+
+### Configure suas informaçoes de conexao development Phinx :
+- [x] phinx.php
+
+```
+ 'development' => [
+            'adapter' => 'mysql',
+            'host' => 'localhost',
+            'name' => 'sql_conexao',
+            'user' => 'root',
+            'pass' => '',
+            'port' => '3306',
+            'charset' => 'utf8',
+        ],
+        
+```
+
+### Executando Migrações
+```
+vendor/bin/phinx migrate
 ```
 
 
@@ -54,13 +75,7 @@ php -S localhost:8000
 vendor/bin/phpunit
 ```
 
-### Configure suas informaçoes de conexao development Phinx:
-- [x] phinx.php
 
-### Executando Migrações
-```
-vendor/bin/phinx migrate
-```
 
 
 ### teste o controller cadastro
