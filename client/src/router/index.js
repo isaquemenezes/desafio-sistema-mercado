@@ -18,17 +18,7 @@ const routes = [
     path: '/produtos',
     name: 'Produtos',
     component: Produtos,
-    // component: () => import('../views/produtos/Index.vue'),
-    //   children: [        
-    //     {
-    //       path: 'cadastro',
-    //       name: 'CadastroProduto',
-    //       component: () => import('../views/produtos/CadastroProduto.vue')
-    //     },
-      
-      
-        
-    //   ]
+   
   },
 
   {
