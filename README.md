@@ -54,6 +54,15 @@ php -S localhost:8000
 vendor/bin/phpunit
 ```
 
+### Configure suas informaçoes de conexao development Phinx:
+- [x] phinx.php
+
+### Executando Migrações
+```
+vendor/bin/phinx migrate
+```
+
+
 ### teste o controller cadastro
 ```
 vendor/bin/phpunit tests/Unit/ProdutoControllerTest.php
@@ -63,3 +72,19 @@ vendor/bin/phpunit tests/Unit/ProdutoControllerTest.php
 ```
 vendor/bin/phpunit tests/Unit/VendaControllerTest.php
 ```
+
+### Instale ORM - já no composer
+```
+composer require robmorgan/phinx
+```
+
+```
+php vendor/bin/phinx init
+``` 
+
+
+
+```
+vendor/bin/phinx create CreateProdutosTable
+```
+
