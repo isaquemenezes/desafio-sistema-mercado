@@ -21,6 +21,10 @@
         <strong class="d-block mt-2"> Sem Produtos </strong>
       </div>
 
+      <div v-if="mensagemDeleteSucesso" class="alert alert-success" role="alert">
+        {{ mensagemDeleteSucesso }}
+      </div>
+
       <!-- start loop  -->
       <div class="d-flex text-body-secondary pt-3" v-for="produto in produtos" :key="produto.id">
 
@@ -31,7 +35,7 @@
 
             <div>
               <button type="button" class="btn btn-primary me-2">Editar</button>
-              <button type="button" class="btn btn-danger">Excluir</button>
+              <button type="button" @click="deleteProduto(produto.id)" class="btn btn-danger">Excluir</button>
             </div>
 
           </div>
@@ -65,7 +69,8 @@ export default {
 
   data() {
     return {
-      produtos: []
+      produtos: [],
+      mensagemDeleteSucesso: ''
     };
   },
 
@@ -85,6 +90,32 @@ export default {
       });
   },
   methods: {
+
+    deleteProduto(id) {
+
+      fetch(`${this.$apiRoute.produtos.deletar}`, { 
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ produto_id: id }),
+      })
+      .then(data => {
+        this.produtos = this.produtos.filter(produto => produto.id !== id);
+        console.log('sucesso frontend:', data.success);
+        this.mensagemDeleteSucesso = data.success;
+        
+        setTimeout(() => {
+          this.mensagemDeleteSucesso = '';
+        }, 2000);
+
+      })
+      .catch(error => {
+        console.error('Erro ao excluir o produto:', error);
+      });
+
+
+    }
 
   }
 };

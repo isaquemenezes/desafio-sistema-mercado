@@ -4,6 +4,7 @@ namespace Models;
 
 use PDOException;
 
+
 class Produto extends Crud
 {
     public function listar()
@@ -75,4 +76,34 @@ class Produto extends Crud
             )
         );
     }
+
+    public function deletar($produto_id) 
+    {
+        try {
+            // $id = $produto_id['id'];
+
+            $produto = $this->deleteDB(
+                'produtos',
+                'id=?',
+                array(
+                    $produto_id
+                )
+            );
+
+            if ($produto) {
+                  
+                return ['success' => 'Produto cadastrado com sucesso.'];
+            } else {
+               
+                return ['error' => 'Erro ao cadastrar o produto.'];
+            }
+
+        } catch (PDOException $e) {
+            throw new PDOException('Erro ao deletar produto: ' . $e->getMessage());
+        }
+
+      
+
+        
+    } 
 }

@@ -31,7 +31,22 @@ class ProdutoController
     public function criar(array $dados)
     {
         try {
+
             $mensagem = $this->crud->criarProduto($dados);
+            
+            echo json_encode($mensagem);
+
+        } catch (PDOException $e) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Erro ao criar produto: ' . $e->getMessage()]);
+        }
+    }
+
+    public function excluir($dado_id)
+    {
+        try {
+            $mensagem = $this->crud->excluirProduto($dado_id);
+
             echo json_encode($mensagem);
         } catch (PDOException $e) {
             http_response_code(500);

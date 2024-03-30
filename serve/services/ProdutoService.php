@@ -24,4 +24,10 @@ class ProdutoService
         $produto = new Produto();
         return $produto->criar($dados);
     }
+
+    public function excluirProduto($produto_id)
+    {
+        $produto = new Produto();
+        return $produto->deletar($produto_id);
+    }
 }
