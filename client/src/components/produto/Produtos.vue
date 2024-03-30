@@ -35,7 +35,7 @@
 
             <div>
               <button type="button" class="btn btn-primary me-2">Editar</button>
-              <button type="button" @click="deleteProduto(produto.id)" class="btn btn-danger">Excluir</button>
+              <button type="button" @click="confirmarExclusao(produto.id)" class="btn btn-danger">Excluir</button>
             </div>
 
           </div>
@@ -59,6 +59,26 @@
       </div>
       <!-- end loop -->
 
+      <!-- Modal de confirmação de exclusão -->
+      <div class="modal" :class="{ 'show': mostrarModal }">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Confirmar Exclusão</h5>
+              <button type="button" class="btn-close" @click="fecharModal"></button>
+            </div>
+            <div class="modal-body">
+              Tem certeza de que deseja excluir este produto?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" @click="fecharModal">Cancelar</button>
+              <button type="button" class="btn btn-danger" @click="deleteProduto">Excluir</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- end Modal de confirmação de exclusão -->
+
     </div>
   </main>
 
@@ -70,7 +90,9 @@ export default {
   data() {
     return {
       produtos: [],
-      mensagemDeleteSucesso: ''
+      mensagemDeleteSucesso: '',
+      mostrarModal: false,
+      produtoParaExcluir: null
     };
   },
 
@@ -91,17 +113,27 @@ export default {
   },
   methods: {
 
-    deleteProduto(id) {
+    confirmarExclusao(id) {
+      
+      this.produtoParaExcluir = id;
+      this.mostrarModal = true;
+    },
+    fecharModal() {
+      
+      this.mostrarModal = false;
+    },
+
+    deleteProduto() {
 
       fetch(`${this.$apiRoute.produtos.deletar}`, { 
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ produto_id: id }),
+        body: JSON.stringify({ produto_id: this.produtoParaExcluir }),
       })
       .then(data => {
-        this.produtos = this.produtos.filter(produto => produto.id !== id);
+        this.produtos = this.produtos.filter(produto => produto.id !== this.produtoParaExcluir);
         console.log('sucesso frontend:', data.success);
         this.mensagemDeleteSucesso = data.success;
         
@@ -112,6 +144,10 @@ export default {
       })
       .catch(error => {
         console.error('Erro ao excluir o produto:', error);
+      })
+      .finally(() => {
+        
+        this.fecharModal();
       });
 
 
@@ -120,3 +156,22 @@ export default {
   }
 };
 </script>
+
+<style>
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal.show {
+  display: block;
+}
+</style>
