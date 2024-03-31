@@ -95,22 +95,23 @@ export default {
       };
 
       // Envia os dados para a API 
-      fetch(this.$apiRoute.produtos.create, {
-        method: 'POST',
+      axios.post(this.$apiRoute.produtos.create, novoProduto, {
+        // method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(novoProduto)
+        // body: JSON.stringify(novoProduto)
       })
-        .then(response => response.json())
-        .then(data => {
+        .then(response => 
+        // response.json())        .then(data => 
+        {
           this.descricao = '';
           this.preco = 0;
           this.tipo = '';
 
-          this.messagemSucesso = data.success;
+          this.messagemSucesso = response.data.success;
 
-          console.log('Produto cadastrado com sucesso:', data);
+          console.log('Produto cadastrado com sucesso:', response.data);
         })
         .catch(error => {
           console.error('Erro ao cadastrar produto:', error);
