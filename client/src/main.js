@@ -8,7 +8,7 @@ import { apiRoute } from '@/services/apiRoute.js';
 const app = createApp(App);
 
 // Definindo o Axios globalmente
-app.config.globalProperties.$http = axios;
+app.config.globalProperties.$httpAxios = axios;
 
 // protótipo Vue para acesso global
 app.config.globalProperties.$apiRoute = apiRoute;

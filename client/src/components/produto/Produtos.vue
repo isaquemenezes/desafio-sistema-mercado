@@ -71,18 +71,17 @@ export default {
 
   mounted() {
 
-    fetch(this.$apiRoute.produtos.listar, {
-      method: 'GET'
+    this.$httpAxios.get(
+      this.$apiRoute.produtos.listar
+    )
+    .then(response => {
+      this.produtos = response.data.dados;
+      
+      console.log('Dados dos produtos:', response.data);
     })
-      .then(response => response.json())
-      .then(data => {
-        this.produtos = data.dados;
-       
-        console.log('Dados dos produtos:', data);
-      })
-      .catch(error => {
-        console.error('Erro ao buscar os produtos:', error);
-      });
+    .catch(error => {
+      console.error('Erro ao buscar os produtos:', error);
+    });
   },
   methods: {
 

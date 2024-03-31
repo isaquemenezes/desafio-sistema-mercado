@@ -89,22 +89,21 @@ export default {
         finalizar: true,
       };
 
-      fetch(this.$apiRoute.vendas.create, {
-        method: 'POST',
+      this.$httpAxios.post(this.$apiRoute.vendas.create, novaVenda, {
+        
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(novaVenda)
+        
+      })    
+      .then(response => {
+
+        console.log('response', response.data);
+
       })
-        .then(response => response.json())
-        .then(data => {
-
-          console.log('response', data);
-
-        })
-        .catch(error => {
-          console.error('Erro ao realizar venda:', error);
-        });
+      .catch(error => {
+        console.error('Erro ao realizar venda:', error);
+      });
 
       // Redirecionar para a rota de vendas
       this.$router.push('/vendas');
@@ -121,20 +120,17 @@ export default {
 
       };
 
-      fetch(this.$apiRoute.vendas.create, {
-        method: 'POST',
+      this.$httpAxios.post(this.$apiRoute.vendas.create, addProduto, {       
         headers: {
           'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(addProduto)
+        },       
+      })      
+      .then(response => {
+        console.log('Venda realizada com sucesso:', response.data);
       })
-        .then(response => response.json())
-        .then(data => {
-          console.log('Venda realizada com sucesso:', data);
-        })
-        .catch(error => {
-          console.error('Erro ao realizar venda:', error);
-        });
+      .catch(error => {
+        console.error('Erro ao realizar venda:', error);
+      });
     }
   },
 

@@ -135,23 +135,24 @@ export default {
   },
 
   mounted() {
-    fetch(this.$apiRoute.vendas.listar)
-      .then(response => response.json())
-      .then(data => {
-        // this.vendas = data.vendasAPI;
-        this.vendas = data.dados;
-        this.exibirMensagem = true;
 
-        setTimeout(() => {
-          this.exibirMensagem = false;
-        }, 2000);
+    this.$httpAxios.get(
+      this.$apiRoute.vendas.listar
+    )    
+    .then(response => { 
+      this.vendas = response.data.dados;
+      this.exibirMensagem = true;
 
-        console.log('dados', data);
+      setTimeout(() => {
+        this.exibirMensagem = false;
+      }, 2000);
 
-      })
-      .catch(error => {
-        console.error('Error :', error);
-      });
+      console.log('dados', response.data);
+
+    })
+    .catch(error => {
+      console.error('Error :', error);
+    });
   }
 };
 </script>

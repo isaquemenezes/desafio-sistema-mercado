@@ -95,27 +95,24 @@ export default {
       };
 
       // Envia os dados para a API 
-      axios.post(this.$apiRoute.produtos.create, novoProduto, {
-        // method: 'POST',
+      this.$httpAxios.post(this.$apiRoute.produtos.create, novoProduto, {
         headers: {
           'Content-Type': 'application/json'
         },
-        // body: JSON.stringify(novoProduto)
       })
-        .then(response => 
-        // response.json())        .then(data => 
-        {
-          this.descricao = '';
-          this.preco = 0;
-          this.tipo = '';
+      .then(response => 
+      {
+        this.descricao = '';
+        this.preco = 0;
+        this.tipo = '';
 
-          this.messagemSucesso = response.data.success;
+        this.messagemSucesso = response.data.success;
 
-          console.log('Produto cadastrado com sucesso:', response.data);
-        })
-        .catch(error => {
-          console.error('Erro ao cadastrar produto:', error);
-        });
+        console.log('Produto cadastrado com sucesso:', response.data);
+      })
+      .catch(error => {
+        console.error('Erro ao cadastrar produto:', error);
+      });
 
       this.mensagemSucesso = '';
       setTimeout(() => {
@@ -128,12 +125,17 @@ export default {
 
   mounted() {
 
-    fetch(this.$apiRoute.produtos.tipoImposto, {
-      method: 'GET',
+    this.$httpAxios.get(this.$apiRoute.produtos.tipoImposto, {
+      headers: {
+          'Content-Type': 'application/json'
+        },
     })
-      .then(response => response.json())
-      .then(data => {
-        this.arrayTipos = data.tipos;
+      .then(response => 
+      // response.json())   .then(data =>
+       {
+        this.arrayTipos = response.data.tipos;
+
+        console.log('Response ', response);
       })
       .catch(error => {
         console.error('Error :', error);
