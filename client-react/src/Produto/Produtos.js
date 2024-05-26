@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Produtos = () => {
     const [produtos, setProdutos] = useState([]);
@@ -46,9 +47,9 @@ const Produtos = () => {
                     <h3 class="border-bottom pb-2 mb-0">Todos os Produtos</h3>
 
                     <div class="d-flex justify-content-between">
-                        <router-link class="btn btn-success" to="/cadastroProduto">
+                        <Link class="btn btn-success" to="/produtos/cadastrar-produto">
                             Cadastrar Produto
-                        </router-link>
+                        </Link>
                     </div>
 
                 </div>

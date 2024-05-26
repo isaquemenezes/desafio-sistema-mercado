@@ -1,21 +1,12 @@
 import React from 'react';
-import Produtos from './Produto/Produtos';
-import CadastroProduto from './Produto/CadastroProduto';
-import Vendas from './Venda/Vendas';
-import './App.css';
 
-function ProdutoViews() {
+const Produtos = () => {
     return (
-        <div className="App">
-            <header className="App-header">
-                <h1>Minha Aplicação---</h1>
-                <Produtos />
-                <CadastroProduto />
-                <Vendas />
-            </header>
+        <div>
+            <h1>Lista de Produtos</h1>
+            {/* Adicione o conteúdo e a lógica para listar os produtos aqui */}
         </div>
     );
 }
 
-
-export default ProdutoViews;
+export default Produtos;
