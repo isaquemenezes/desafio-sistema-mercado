@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+.home {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.feature-section,
+.developer-section,
+.technology-section {
+  margin-bottom: 30px;
+}
+
+.feature-section h2,
+.developer-section h2,
+.technology-section h2 {
+  margin-bottom: 10px;
+}
+
+.feature-section ul,
+.technology-section ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.technology-section ul {
+  text-align: left;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.btn {
+  margin-top: 10px;
+  margin-right: 10px;
+}

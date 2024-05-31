@@ -1,21 +1,19 @@
-// src/App.js
-
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-// import CadastroProduto from './Produto/CadastroProduto';
-
-import Home from './pages/Home';
-import ProdutoIndex from './pages/produtos/index';
-import VendaIndex from './pages/vendas/index';
-import CadastrarProduto from './pages/produtos/cadastrar-produto';
+// import Home from './pages/Home';
+// import ProdutoIndex from './pages/produtos/index';
+// import VendaIndex from './pages/vendas/index';
+// import CadastrarProduto from './pages/produtos/cadastrar-produto';
+import Routes from './router/routes';
 import './App.css';
 
 function App() {
     return (
-        <Router>
+        // <Router>
         <div className="App">
-            <Routes>
+        <Routes />
+            {/* <Routes>
                <Route path="/" element={<Home />} />
 
                <Route path="/produtos" element={<ProdutoIndex />} />
@@ -23,9 +21,9 @@ function App() {
                <Route path="/produtos/cadastrar-produto" element={<CadastrarProduto />} />
               
                
-            </Routes>
+            </Routes> */}
         </div>
-    </Router>
+    // </Router>
     );
 }
 

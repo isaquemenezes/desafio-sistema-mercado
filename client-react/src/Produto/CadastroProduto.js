@@ -68,17 +68,7 @@ const CadastroProduto = () => {
             }
 
             <form onSubmit={handleSubmit}>
-                {/* <div className="form-group mt-2">
-                    <label htmlFor="nome" className="text-start d-block">Nome</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="nome"
-                        value={nome}
-                        onChange={(e) => setNome(e.target.value)}
-                        required
-                    />
-                </div> */}
+               
                 
                 <div className="form-group mt-2">
                     <label htmlFor="preco" className="text-start d-block">Preço</label>
