@@ -99,3 +99,10 @@ php vendor/bin/phinx init
 ```
 vendor/bin/phinx create CreateProdutosTable
 ```
+
+## Implementação com DOCKER:
+
+- [x] Acesse o MySQL
+```
+desafio-sistema-mercado$ docker exec -it db mysql -u root -p
+```

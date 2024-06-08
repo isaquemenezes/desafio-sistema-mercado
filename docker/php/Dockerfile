@@ -1,4 +1,4 @@
-FROM php:8.0-fpm
+FROM php:8.2.0-fpm
 
 # Instalar extensões necessárias
 RUN docker-php-ext-install pdo pdo_mysql
