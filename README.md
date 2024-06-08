@@ -102,6 +102,27 @@ vendor/bin/phinx create CreateProdutosTable
 
 ## Implementação com DOCKER:
 
+1. Construir as imagens:
+```
+docker-compose build
+```
+
+2. Iniciar os contêineres:
+```
+docker-compose up -d
+```
+
+3. Verificar os contêineres:
+```
+docker ps -a
+```
+
+4. Testar a aplicação
+```
+http://localhost:8000/index.php
+```
+
+
 - [x] Acesse o MySQL
 ```
 desafio-sistema-mercado$ docker exec -it db mysql -u root -p
