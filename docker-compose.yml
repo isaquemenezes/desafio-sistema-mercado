@@ -13,6 +13,16 @@ services:
   #     - php-fpm
   #     - db
 
+  client-vuejs:
+    build:
+      context: .  # Caminho para o Dockerfile do cliente Vue.js
+      dockerfile: docker/vuejs/Dockerfile
+    container_name: vuejs-client
+    ports:
+      - "3000:80"  # Mapeia a porta 3000 do host para a porta 80 do contêiner
+    # depends_on:
+    #   - backend  # Supondo que você tenha um serviço backend no Docker Compose
+
   php-fpm:
     build:
       context: .
@@ -27,12 +37,15 @@ services:
 
   db:
     image: mysql:8.0
+    # restart: always
     container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: my_database
       MYSQL_USER: my_user
       MYSQL_PASSWORD: my_password
+    ports:
+      - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
 
