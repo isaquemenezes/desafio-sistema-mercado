@@ -1,6 +1,7 @@
 #Application
 /client/package-lock.json
 /client/node_modules
+/node-server/node_modules
 
 /serve/vendor
 /serve/composer.lock
